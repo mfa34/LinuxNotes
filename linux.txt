@@ -1,0 +1,149 @@
+* dd mbr yedekleme icin de kullanabilir.(master boot record)
+rastgele veri uretmek icin kullanilir
+ ==> dd if=dev/zero of=mbfile bs=10M count=60 conv =noerror
+
+sudo dd if=/dev/sda of=mbr.yedek bs=512  count=1
+
+sudo dd if=mbr.yedek of=/dev/sda ===> mbr i tekrardan restore islemini gerceklestirmis olduk .
+
+diski yedek almak icin sadece bu dd komutu kullanabiliriz bu sa
+
+dd if=/dev/sda of=/dev/sdb conv=noerror,sync ==> tek komutla butun diski yedeklemis olmusduk.
+
+*lsblk 
+
+lsblk -o NAME,SIZE
+
+*blkid 
+ekran fotografina bakilacak 
+
+*Sunucular arasinda kopyalama islemi nasil yapilacak ?
+scp komutu kullaniyor.
+scp egitimdosyam safirdepo@10.1.25.43:/home/safirdepo
+
+klasor ve klosrun dolu olan halini gondermemk icin 
+
+scp -r kullanilir 
+
+ssh kullanarak dosya gonderimi sagliyor 
+
+*rsync komutu 
+
+uzak sunucular arasinda veri senkrenizasyonu icin kullanilir
+
+rsync parametreler kaynak hedef seklinde yazim kuralidir .
+rsync -av (-rlptgoD) 
+
+rsync -av Documents/Downloads/
+
+
+*wget komutu tarayici uzerinde indirme yapilan seyleri bize terminalde erisimi sagliyor .
+wget -q  --server-response ===> response bilgileri almis olduk 
+
+*curl komutu cok kapsamli ve yetenkeli bir komut 
+curl -is fatlan.com
+curl -v nmap.com
+
+bazen wget olmadi zzamn curl kullanilir 
+
+curl -O dosyalinki bu sekilde de indirme yapilabilir.
+
+chmod komutu 
+
+ls -ld index.html
+========output ↓
+
+-rw-r--r-- 1 mfa mfa 19639 Aug 16 10:40 index.html
+
+chmod secenekler izinler dosya seklinde bi kullanim gerceklesir
+chmod 0 index.html
+ ls -ld index.html
+---------- 1 mfa mfa 19639 Aug 16 10:40 index.html
+
+chmod 777 verdigimzde butun herkese degistirme izni verdigimizden dolayi bunu 
+suid komutu kullanarak 
+basa 1 alarak butun herkesin yazmasini engelliyoruz.
+
+chown sahiplik chgrp grup degistirmek icin kullanilir .
+
+sudo chown ubuntu:ubuntu dosyam1 
+seklinde dosyayi eski haline getirmis olduk.
+
+
+=================================================================================
+
+
+
+Metin Editorleri 
+
+:set list komutu ===> Yanlis bosluklari size gozle gorulebilir hale getirir.
+
+arama yapmak icin "/aranacak kelime"
+
+imlecin durdugu yerden sonra kopyalar veyahut kesme islemini uygular .
+
+dd kesme 
+
+yy kopyalama
+
+p paste olarak kullanilri.
+
+5 dd yaparsak 5 i satira kadar kesme islemini uygular .
+
+shift + g === > en son satira gider .
+
+sudo grep centos9s/etc/shadow
+
+$salt bilgisi$ 
+cozumleme salt bilgisi ile haslayerek password u kabul ediyor .
+
+/etc/group 
+
+useradd vs adduser 
+
+adduser script olarak devam etmekte  . Burada ise karsilikli sorularla size istediginiz user i lullanidrtiyor.
+
+
+useradd a parametre kullanarak yazmak gerekir .
+
+id mfa ==> kullanici hakkinda gerekli bilgiler veriler ----> daha detayli istiyorsak ====> finger mfa kullanabiliriz.
+
+usermod kullanici bilgilerinde gerekli degisikleri yapmak icin kullanilir .
+
+su(switch user) , sudo() ,su (), su -(kullanici icin login olur fakat )
+
+sudoers dosyasi Linux sistemlerde varsayilan olarak kullanicilar icin sudo guvenlik ilkelerinin belirlendigi dosyadir.
+
+???safe modda girip , kendimize ilk basta root verip daha sonrasinda passwd degistirsek olur mu bu sahneden kacinmak icin 
+
+dnf list | wc -l 13967 adet paket kurulu olmus 
+
+Debian tarafinda 
+
+apt search htop 
+paket hakkinda bana bilgi veriyor 
+
+butun source lisler 
+
+/etc/apt/source.list
+/etc/apt/source.list.d. ====> bizim olusturmak istedigimiz repo burada olacaktir .
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
